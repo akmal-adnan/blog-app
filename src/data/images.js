@@ -4,6 +4,8 @@ import project3 from '../assets/images/project3.jpg';
 import project4 from '../assets/images/project4.jpg';
 import project5 from '../assets/images/project5.jpg';
 import ProfileImg from '../assets/images/profile_img.png';
+import logo from '../assets/images/logo.png';
+import myflag from '../assets/images/malaysia-flag.png';
 
 export default {
   ProfileImg,
@@ -12,4 +14,6 @@ export default {
   project3,
   project4,
   project5,
+  logo,
+  myflag,
 };
