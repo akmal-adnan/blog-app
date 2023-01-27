@@ -10,9 +10,6 @@
     "lint": "eslint src --ext .ts,.tsx,.js,.jsx"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.11.4",
     "framer-motion": "^8.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
