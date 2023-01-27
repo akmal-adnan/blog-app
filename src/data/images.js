@@ -6,6 +6,9 @@ import project5 from '../assets/images/project5.jpg';
 import ProfileImg from '../assets/images/profile_img.png';
 import logo from '../assets/images/logo.png';
 import myflag from '../assets/images/malaysia-flag.png';
+import leaf1 from '../assets/images/leaf1.png';
+import leaf2 from '../assets/images/leaf2.png';
+import leaf3 from '../assets/images/leaf3.png';
 
 export default {
   ProfileImg,
@@ -16,4 +19,7 @@ export default {
   project5,
   logo,
   myflag,
+  leaf1,
+  leaf2,
+  leaf3,
 };

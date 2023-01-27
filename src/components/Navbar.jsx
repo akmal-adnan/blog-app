@@ -74,16 +74,8 @@ function Navbar() {
             <i className="ri-close-line" />
           </div>
 
-          {/* <img
-            src="assets/img/leaf-branch-4.png"
-            alt="nav-pic"
-            className="nav__img-1"
-          />
-          <img
-            src="assets/img/leaf-branch-3.png"
-            alt="nav-pic"
-            className="nav__img-2"
-          /> */}
+          <img src={images.leaf3} alt="nav-pic" className="nav__img-1" />
+          <img src={images.leaf3} alt="nav-pic" className="nav__img-2" />
         </div>
 
         <div className="nav__buttons">

@@ -87,18 +87,19 @@
 .nav__img-1,
 .nav__img-2 {
   position: absolute;
-  opacity: 0.2;
+  opacity: 0.3;
+  filter: hue-rotate(270deg) saturate(75%) brightness(70%);
 }
 
 .nav__img-1 {
   width: 100px;
-  top: 0.75rem;
-  left: -2rem;
-  transform: rotate(165deg);
+  top: 1rem;
+  left: -1rem;
+  transform: rotate(155deg);
 }
 
 .nav__img-2 {
-  width: 50px;
+  width: 100px;
   right: -1rem;
   bottom: 0;
   transform: rotate(-30deg);
@@ -151,6 +152,13 @@
   border-radius: 50%;
   display: grid;
   place-items: center;
+  box-shadow: 0 0px 24px hsla(var(--hue), var(--sat), var(--lig), 0.25);
+  transition: box-shadow 0.4s;
+}
+
+.profile__border:hover {
+  cursor: pointer;
+  box-shadow: 0 0px 24px hsla(var(--hue), var(--sat), var(--lig), 0.55);
 }
 
 .profie__container {
@@ -246,12 +254,12 @@
 }
 
 .journey__desc {
-  color: var(--text-color-light);
+  color: var(--title-color);
   transition: color 0.4s;
 }
 
 .journey__desc:hover {
-  color: var(--title-color);
+  color: var(--first-color);
 }
 
 /* ========================== PROJECTS ========================== */
