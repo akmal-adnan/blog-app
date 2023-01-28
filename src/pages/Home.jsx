@@ -53,7 +53,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="about">
+      <section className="about" id="about">
         <div className="container">
           <h3 className="about__title">About Me</h3>
           <p>
