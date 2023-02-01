@@ -9,24 +9,20 @@ Title: Chevrolet Corvette (C7)
 
 import React, { useRef, useEffect } from 'react';
 import { useGLTF } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 
 export function Car(props) {
   const { nodes, materials } = useGLTF('/models/car/model.glb');
   const tireRef = useRef([null, null, null, null]);
 
-  useEffect(() => {
+  useFrame(() => {
     const tires = tireRef.current;
 
-    const animate = () => {
-      tires.forEach(tire => {
-        if (!tire) return;
-        tire.rotation.x += 0.02;
-      });
-    };
-
-    const id = setInterval(animate, 16);
-    return () => clearInterval(id);
-  }, []);
+    tires.forEach(tire => {
+      if (!tire) return;
+      tire.rotation.x += 0.02;
+    });
+  });
 
   return (
     <group {...props} dispose={null} scale={0.006}>

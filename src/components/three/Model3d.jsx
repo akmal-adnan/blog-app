@@ -1,4 +1,4 @@
-import React, { Suspense, useRef } from 'react';
+import React, { Suspense, useRef, useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import {
   CubeCamera,
@@ -9,25 +9,39 @@ import {
 import { Car } from './Car';
 import { Rings } from './Rings';
 
+import { Vector3 } from 'three';
+
 function Cube() {
   const meshRef = useRef();
+  const [target, setTarget] = useState(new Vector3(0, 2, 6));
+  const [lerpFactor, setLerpFactor] = useState(0);
 
-  useFrame(() => {
+  useFrame((state, delta) => {
     if (!meshRef.current) {
       return;
     }
 
-    // meshRef.current.rotation.z += 0.01;
-    // meshRef.current.rotation.x += 0.01;
-    // meshRef.current.rotation.y -= 0.01;
+    if (lerpFactor < 1) {
+      setLerpFactor(lerpFactor => Math.min(1, lerpFactor + delta / 50));
+      meshRef.current.position.lerp(target, lerpFactor);
+
+      setInterval(() => {
+        setLerpFactor(1);
+      }, 4000);
+    }
   });
 
   return (
     <>
       <OrbitControls target={[0, 0.35, 0]} maxPolarAngle={1.45} />
-      <PerspectiveCamera makeDefault fov={50} position={[5, 0, 0]} />
+      <PerspectiveCamera
+        ref={meshRef}
+        makeDefault
+        fov={50}
+        position={[7, 3, 0]}
+      />
 
-      <mesh ref={meshRef}>
+      <mesh>
         <CubeCamera resolution={256} frames={Infinity}>
           {texture => (
             <>
