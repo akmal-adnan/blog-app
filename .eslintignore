@@ -1,1 +1,3 @@
-!src/**/*
+src/components/three
+vite.config.js
+# !src/**/*

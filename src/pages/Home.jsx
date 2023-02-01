@@ -4,7 +4,7 @@ import { images } from '../data';
 function Home() {
   return (
     <main className="main">
-      <section className="home section" id="home">
+      <section className="home" id="home">
         <div className="container grid home__grid">
           {/* Profile pic */}
           <div className="profile__border">
