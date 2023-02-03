@@ -46,7 +46,7 @@ function Cube() {
           {texture => (
             <>
               <Environment map={texture} />
-              <Car />
+              {/* <Car /> */}
             </>
           )}
         </CubeCamera>
