@@ -6,19 +6,17 @@ import {
   OrbitControls,
   PerspectiveCamera,
 } from '@react-three/drei';
-import { Car } from './Car';
-import { Rings } from './Rings';
-import { Scene } from 'three';
-import { Model } from './Scene';
 
+import { Rings } from './Rings';
+import { Car } from './Car';
 import { Vector3 } from 'three';
 
-function Cube() {
+function CarModel() {
   const meshRef = useRef();
-  const [target, setTarget] = useState(new Vector3(0, 2, 6));
+  const [target, setTarget] = useState(new Vector3(0, 2.5, 5.8));
   const [lerpFactor, setLerpFactor] = useState(0);
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if (!meshRef.current) {
       return;
     }
@@ -29,7 +27,7 @@ function Cube() {
 
       setInterval(() => {
         setLerpFactor(1);
-      }, 4000);
+      }, 3000);
     }
   });
 
@@ -40,7 +38,7 @@ function Cube() {
         ref={meshRef}
         makeDefault
         fov={50}
-        position={[7, 3, 0]}
+        position={[7.6, 2.6, 0]}
       />
 
       <mesh>
@@ -48,13 +46,13 @@ function Cube() {
           {texture => (
             <>
               <Environment map={texture} />
-              <Model />
+              <Car />
             </>
           )}
         </CubeCamera>
       </mesh>
 
-      {/* <ambientLight color={'white'} intensity={1} /> */}
+      <ambientLight intensity={8} />
       <spotLight
         color={[1, 0.25, 0.7]}
         intensity={10}
@@ -77,15 +75,6 @@ function Cube() {
   );
 }
 
-function Floor() {
-  return (
-    <mesh rotation-x={-Math.PI * 0.5} castShadow receiveShadow>
-      <planeGeometry args={[5, 7]} />
-      <meshStandardMaterial color="hsl(19, 100%, 96%)" />
-    </mesh>
-  );
-}
-
 function Loading() {
   return (
     <>
@@ -100,7 +89,7 @@ function Model3d() {
   return (
     <Suspense fallback={<Loading />}>
       <Canvas shadows style={{ height: '450px' }} className="car__container">
-        <Cube />
+        <CarModel />
         <Rings />
       </Canvas>
     </Suspense>

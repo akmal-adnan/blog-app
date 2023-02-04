@@ -15,6 +15,25 @@
   display: flex;
 }
 
+/*=============== Error 404 ===============*/
+.error__box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
+  row-gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.err__title {
+  font-size: 1.8rem;
+}
+
+.err__desc {
+  font-weight: 100;
+}
+
 /*=============== HEADER & NAV ===============*/
 .header {
   position: fixed;
