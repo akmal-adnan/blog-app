@@ -8,6 +8,8 @@ import {
 } from '@react-three/drei';
 import { Car } from './Car';
 import { Rings } from './Rings';
+import { Scene } from 'three';
+import { Model } from './Scene';
 
 import { Vector3 } from 'three';
 
@@ -46,16 +48,16 @@ function Cube() {
           {texture => (
             <>
               <Environment map={texture} />
-              {/* <Car /> */}
+              <Model />
             </>
           )}
         </CubeCamera>
       </mesh>
 
-      <ambientLight color={'white'} intensity={1} />
+      {/* <ambientLight color={'white'} intensity={1} /> */}
       <spotLight
         color={[1, 0.25, 0.7]}
-        intensity={30}
+        intensity={10}
         angle={0.6}
         penumbra={0.5}
         position={[5, 5, 0]}
@@ -64,7 +66,7 @@ function Cube() {
       />
       <spotLight
         color={[0.14, 0.5, 1]}
-        intensity={30}
+        intensity={10}
         angle={0.6}
         penumbra={0.5}
         position={[-5, 5, 0]}
