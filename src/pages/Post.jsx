@@ -9,7 +9,7 @@ function Post() {
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 100, opacity: 0 }}
-        transition={{ duration: 0.8 }}>
+        transition={{ duration: 0.5 }}>
         <section className="projects projects__post">
           <div className="container">
             <h3 className="projects__bigtitle">My Works</h3>

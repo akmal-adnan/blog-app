@@ -88,7 +88,7 @@ function Loading() {
 function Model3d() {
   return (
     <Suspense fallback={<Loading />}>
-      <Canvas shadows style={{ height: '450px' }} className="car__container">
+      <Canvas shadows style={{ height: '350px' }} className="car__container">
         <CarModel />
         <Rings />
       </Canvas>
