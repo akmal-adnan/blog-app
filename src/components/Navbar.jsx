@@ -39,10 +39,10 @@ function Navbar() {
   return (
     <header className="header" id="header">
       <nav className="nav container">
-        <a href="#home" className="nav__logo">
+        <Link to="/" className="nav__logo">
           <img src={images.logo} alt="logo" />
           Akmal
-        </a>
+        </Link>
 
         <div className={`nav__menu ${showMenu}`} id="nav-menu">
           <ul className="nav__list">
@@ -65,7 +65,11 @@ function Navbar() {
             </li>
 
             <li className="nav__item">
-              <a href="#Source" className="nav__link" onClick={removeMenu}>
+              <a
+                href="https://github.com/akmal-adnan/blog-app"
+                target="https://github.com/akmal-adnan/blog-app"
+                className="nav__link"
+                onClick={removeMenu}>
                 Source
               </a>
             </li>
