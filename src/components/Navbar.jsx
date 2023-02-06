@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { images } from '../data';
 import DarkMode from './DarkMode';
 
@@ -46,9 +47,9 @@ function Navbar() {
         <div className={`nav__menu ${showMenu}`} id="nav-menu">
           <ul className="nav__list">
             <li className="nav__item">
-              <a href="#home" className="nav__link" onClick={removeMenu}>
+              <Link to="/" className="nav__link" onClick={removeMenu}>
                 Home
-              </a>
+              </Link>
             </li>
 
             <li className="nav__item">
@@ -58,9 +59,9 @@ function Navbar() {
             </li>
 
             <li className="nav__item">
-              <a href="#Post" className="nav__link" onClick={removeMenu}>
+              <Link to="/post" className="nav__link" onClick={removeMenu}>
                 Post
-              </a>
+              </Link>
             </li>
 
             <li className="nav__item">

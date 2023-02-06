@@ -300,6 +300,16 @@
 
 /* ========================== PROJECTS ========================== */
 
+.projects__post {
+  margin-top: 2rem;
+}
+
+.projects__bigtitle {
+  display: flex;
+  padding-block: 1rem;
+  justify-content: center;
+}
+
 .projects__card {
   position: relative;
   border-radius: 1rem;
