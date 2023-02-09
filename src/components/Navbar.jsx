@@ -1,12 +1,15 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { images } from '../data';
 import DarkMode from './DarkMode';
 
 function Navbar() {
   const [showMenu, setMenu] = useState('');
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
     const scrollHeader = () => {
@@ -53,9 +56,9 @@ function Navbar() {
             </li>
 
             <li className="nav__item">
-              <a href="#about" className="nav__link" onClick={removeMenu}>
+              <Link to="/#about" className="nav__link" onClick={removeMenu}>
                 About
-              </a>
+              </Link>
             </li>
 
             <li className="nav__item">
@@ -75,7 +78,13 @@ function Navbar() {
             </li>
           </ul>
 
-          <div className="nav__close" id="nav-close" onClick={handleMenu}>
+          <div
+            id="nav-close"
+            className="nav__close"
+            role="button"
+            onClick={handleMenu}
+            onKeyDown={handleMenu}
+            tabIndex={0}>
             <i className="ri-close-line" />
           </div>
 
@@ -86,7 +95,13 @@ function Navbar() {
         <div className="nav__buttons">
           <DarkMode />
 
-          <div className="nav__toggle" id="nav-toggle" onClick={handleMenu}>
+          <div
+            className="nav__toggle"
+            id="nav-toggle"
+            role="button"
+            onClick={handleMenu}
+            onKeyDown={handleMenu}
+            tabIndex={0}>
             <i className="ri-apps-2-line change-theme" />
           </div>
         </div>

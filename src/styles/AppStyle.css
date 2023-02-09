@@ -418,8 +418,6 @@
   transform: translateX(3px);
 }
 
-/*=============== Grid Area ===============*/
-
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 @media screen and (max-width: 340px) {

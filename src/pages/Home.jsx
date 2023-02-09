@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 import { images } from '../data';
 
 function Home() {
+  const aboutRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    // for scrolling to section
+    if (location.hash === '#about') {
+      aboutRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [location.hash]);
+
   return (
     <main className="main">
       <motion.div
@@ -59,7 +70,7 @@ function Home() {
           </div>
         </section>
 
-        <section className="about" id="about">
+        <section ref={aboutRef} className="about" id="about">
           <div className="container">
             <h3 className="about__title">About Me</h3>
             <p>
