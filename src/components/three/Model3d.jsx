@@ -1,5 +1,5 @@
 import React, { Suspense, useRef, useEffect, useState } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import {
   CubeCamera,
   Environment,
@@ -13,7 +13,7 @@ import { Vector3 } from 'three';
 
 function CarModel() {
   const meshRef = useRef();
-  const [target, setTarget] = useState(new Vector3(0, 2.5, 5.8));
+  const carRef = useRef();
   const [lerpFactor, setLerpFactor] = useState(0);
 
   useFrame((_, delta) => {
@@ -21,13 +21,30 @@ function CarModel() {
       return;
     }
 
-    if (lerpFactor < 1) {
-      setLerpFactor(lerpFactor => Math.min(1, lerpFactor + delta / 50));
-      meshRef.current.position.lerp(target, lerpFactor);
+    if (!carRef.current) {
+      return;
+    }
 
-      setInterval(() => {
-        setLerpFactor(1);
-      }, 3000);
+    if (lerpFactor < 1) {
+      const currentPosition = meshRef.current.position;
+      const targetPosition = new Vector3(0, 2.5, 5.8);
+
+      const targetCarPos = new Vector3(0, 0, 0);
+
+      const distance = currentPosition.distanceTo(targetPosition);
+
+      const maxDistance = 8; // Set the maximum distance between positions here
+      const normalizedLerpFactor =
+        lerpFactor + delta / 50 / (distance / maxDistance);
+
+      setLerpFactor(Math.min(1, normalizedLerpFactor));
+      meshRef.current.position.lerp(targetPosition, normalizedLerpFactor);
+      carRef.current.position.lerp(targetCarPos, normalizedLerpFactor);
+      // carRef.current.position.z += 0.06;
+
+      if (normalizedLerpFactor === 1) {
+        // Animation has ended, do something here
+      }
     }
   });
 
@@ -41,7 +58,7 @@ function CarModel() {
         position={[7.6, 2.6, 0]}
       />
 
-      <mesh>
+      <mesh position={[0, 0, -10]} ref={carRef}>
         <CubeCamera resolution={256} frames={Infinity}>
           {texture => (
             <>
@@ -55,7 +72,7 @@ function CarModel() {
       <ambientLight intensity={8} />
       <spotLight
         color={[1, 0.25, 0.7]}
-        intensity={10}
+        intensity={15}
         angle={0.6}
         penumbra={0.5}
         position={[5, 5, 0]}
@@ -63,13 +80,27 @@ function CarModel() {
         shadow-bias={-0.0001}
       />
       <spotLight
-        color={[0.14, 0.5, 1]}
+        color={[1, 0.25, 0.7]}
         intensity={10}
         angle={0.6}
         penumbra={0.5}
         position={[-5, 5, 0]}
         castShadow
         shadow-bias={-0.0001}
+      />
+      <spotLight
+        color={[1, 0.25, 0.7]}
+        intensity={10}
+        position={[0, 5, 10]}
+        penumbra={0.5}
+        castShadow
+      />
+      <spotLight
+        color={[1, 0.25, 0.7]}
+        intensity={10}
+        position={[0, 5, -20]}
+        penumbra={0.5}
+        castShadow
       />
     </>
   );
