@@ -1,5 +1,5 @@
 import React, { Suspense, useRef, useEffect, useState } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import {
   CubeCamera,
   Environment,
@@ -28,7 +28,6 @@ function CarModel() {
     if (lerpFactor < 1) {
       const currentPosition = meshRef.current.position;
       const targetPosition = new Vector3(0, 2.5, 5.8);
-
       const targetCarPos = new Vector3(0, 0, 0);
 
       const distance = currentPosition.distanceTo(targetPosition);
@@ -38,7 +37,9 @@ function CarModel() {
         lerpFactor + delta / 50 / (distance / maxDistance);
 
       setLerpFactor(Math.min(1, normalizedLerpFactor));
-      meshRef.current.position.lerp(targetPosition, normalizedLerpFactor);
+      setTimeout(() => {
+        meshRef.current.position.lerp(targetPosition, normalizedLerpFactor);
+      }, 1500);
       carRef.current.position.lerp(targetCarPos, normalizedLerpFactor);
       // carRef.current.position.z += 0.06;
 
